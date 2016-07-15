@@ -29,12 +29,18 @@ testToRevDigits (n,d) = toRevDigits n == d
 
 ex2Tests :: [Test]
 ex2Tests = [Test "toRevDigits test" testToRevDigits
-             [(123, [3,2,1]), (1234, [4,3,2,1]), (5, [5]), (0, []), (-12, [])]]
+             [(123, [3,2,1]), (1234, [4,3,2,1]), (5, [5]), (0, []), (-12, [])]
+            ]
 
 -- Exercise 3 -----------------------------------------
 
+testDoubleEveryOther :: ([Integer], [Integer]) -> Bool
+testDoubleEveryOther (n,d) = doubleEveryOther n == d
+
 ex3Tests :: [Test]
-ex3Tests = []
+ex3Tests = [Test "doubleEveryOther test" testDoubleEveryOther
+             [([4,9,5,5], [4,18,5,10]), ([0,0], [0,0]), ([1,-3,-2,4], [1,-6,-2,8])]
+            ]
 
 -- Exercise 4 -----------------------------------------
 
