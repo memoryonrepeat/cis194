@@ -21,11 +21,15 @@ toRevDigits n
 -- Exercise 3 -----------------------------------------
 
 -- Double every second number in a list starting on the left.
+-- NOTE:
+-- Without base cases, the notation (a:x:xs) will throw non-exhaustive pattern error
+-- Because (a:x:xs) only match lists with at least 2 elements
+-- Read more about list notation in "The Haskell road to logic math and programming"
+-- and "Thinking functionally with Haskell"
 doubleEveryOther :: [Integer] -> [Integer]
 doubleEveryOther [] = []
 doubleEveryOther [x] = [x]
-doubleEveryOther [x,y] = [x,2*y]
-doubleEveryOther (a:e:x) = a : 2*e : doubleEveryOther(x)
+doubleEveryOther (a:x:xs) = a : 2*x : doubleEveryOther(xs)
 
 -- Exercise 4 -----------------------------------------
 
