@@ -22,21 +22,22 @@ toRevDigits n
 
 -- Double every second number in a list starting on the left.
 -- NOTE:
--- Without base cases, the notation (a:x:xs) will throw non-exhaustive pattern error
--- Because (a:x:xs) only match lists with at least 2 elements
+-- Without base cases, the notation (x:xs:xss) will throw non-exhaustive pattern error
+-- Because (x:xs:xss) only match lists with at least 2 elements
 -- Read more about list notation in "The Haskell road to logic math and programming"
--- and "Thinking functionally with Haskell"
 doubleEveryOther :: [Integer] -> [Integer]
 doubleEveryOther [] = []
 doubleEveryOther [x] = [x]
-doubleEveryOther (a:x:xs) = a : 2*x : doubleEveryOther(xs)
+doubleEveryOther (x:xs:xss) = x : 2*xs : doubleEveryOther(xss)
 
 -- Exercise 4 -----------------------------------------
 
 -- Calculate the sum of all the digits in every Integer.
 sumDigits :: [Integer] -> Integer
-sumDigits = undefined
-
+sumDigits [] = 0
+sumDigits (x:xs) = case x<10 of
+  True -> x + sumDigits(xs)
+  False -> sumDigits(toRevDigits x) + sumDigits(xs)
 
 -- Exercise 5 -----------------------------------------
 
