@@ -24,8 +24,12 @@ ex1Tests = [ Test "lastDigit test" testLastDigit
 
 -- Exercise 2 -----------------------------------------
 
+testToRevDigits :: (Integer, [Integer]) -> Bool
+testToRevDigits (n,d) = toRevDigits n == d
+
 ex2Tests :: [Test]
-ex2Tests = []
+ex2Tests = [Test "toRevDigits test" testToRevDigits
+             [(123, [3,2,1]), (1234, [4,3,2,1]), (5, [5]), (0, []), (-12, [])]]
 
 -- Exercise 3 -----------------------------------------
 
