@@ -51,5 +51,7 @@ luhn n = sumDigits(doubleEveryOther(toRevDigits n)) `mod` 10 == 0
 type Peg = String
 type Move = (Peg, Peg)
 
+-- Why ++ works instead of : ?
 hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
-hanoi = undefined
+hanoi 1 a b c = [(a,b)]
+hanoi n a b c = hanoi (n-1) a c b ++ hanoi 1 a b c ++ hanoi (n-1) c b a

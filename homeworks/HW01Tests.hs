@@ -66,8 +66,13 @@ ex5Tests = [Test "luhn test" testLuhn
 
 -- Exercise 6 -----------------------------------------
 
+testHanoi :: (Integer,Peg,Peg,Peg,[Move]) -> Bool
+testHanoi (n,a,b,c,d) = hanoi n a b c == d
+
 ex6Tests :: [Test]
-ex6Tests = []
+ex6Tests = [Test "hanoi test" testHanoi
+             [(2,"a","b","c",([("a","c"), ("a","b"), ("c","b")]))]
+            ]
 
 -- All Tests ------------------------------------------
 
