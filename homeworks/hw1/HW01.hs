@@ -55,3 +55,13 @@ type Move = (Peg, Peg)
 hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
 hanoi 1 a b c = [(a,b)]
 hanoi n a b c = hanoi (n-1) a c b ++ hanoi 1 a b c ++ hanoi (n-1) c b a
+
+-- hanoi4 (Reve's puzzle) To-do: 
+-- Use 3-peg case with brute force (on number of discs to move each time and the intermediary disc to use) to find a possible minimum solution for 4-peg case
+-- Or use Frame–Stewart algorithm which was proven to be optimal
+-- To fix the type converting issue
+
+hanoi4 :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+hanoi4 n 
+  | n <= n-round(sqrt(2*n+1))+1		= [(a,b)]
+  | otherwise 						= hanoi4 (n-round(sqrt(2*n+1))+1) a c b d ++ hanoi4 (round(sqrt(2*n+1))+1) a b c d ++ hanoi4 (n-round(sqrt(2*n+1))+1) c b a d
