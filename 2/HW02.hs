@@ -31,11 +31,11 @@ exactMatches a b = length( filter (\(x,y) -> x==y) (zip a b))
 
 -- For each peg in xs, count how many times is occurs in ys
 countColors :: Code -> [Int]
-countColors = undefined
+countColors code = map (\color -> length( filter (\peg -> peg==color) (code))) colors
 
 -- Count number of matches between the actual code and the guess
 matches :: Code -> Code -> Int
-matches = undefined
+matches secret guess = sum( map (\(x,y) -> min x y) (zip (countColors secret) (countColors guess) ))
 
 -- Exercise 3 -----------------------------------------
 
