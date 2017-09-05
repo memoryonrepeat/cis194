@@ -61,7 +61,8 @@ hanoi n a b c = hanoi (n-1) a c b ++ hanoi 1 a b c ++ hanoi (n-1) c b a
 -- Or use Frame–Stewart algorithm which was proven to be optimal
 -- To fix the type converting issue
 
-hanoi4 :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
+{-hanoi4 :: Integer -> Peg -> Peg -> Peg -> Peg -> [Move]
 hanoi4 n 
   | n <= n-round(sqrt(2*n+1))+1		= [(a,b)]
   | otherwise 						= hanoi4 (n-round(sqrt(2*n+1))+1) a c b d ++ hanoi4 (round(sqrt(2*n+1))+1) a b c d ++ hanoi4 (n-round(sqrt(2*n+1))+1) c b a d
+-}
