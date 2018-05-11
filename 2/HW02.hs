@@ -41,22 +41,24 @@ matches secret guess = sum( map (\(x,y) -> min x y) (zip (countColors secret) (c
 
 -- Construct a Move from a guess given the actual code
 getMove :: Code -> Code -> Move
-getMove = undefined
+getMove secret guess = Move guess (exactMatches secret guess) ((matches secret guess) - (exactMatches secret guess))
 
 -- Exercise 4 -----------------------------------------
 
 isConsistent :: Move -> Code -> Bool
-isConsistent = undefined
+isConsistent (Move guess exact nonExact) code
+  | (Move guess exact nonExact) == getMove code guess  = True
+  | otherwise 										   = False
 
 -- Exercise 5 -----------------------------------------
 
 filterCodes :: Move -> [Code] -> [Code]
-filterCodes = undefined
+filterCodes move code = filter (isConsistent move) code 
 
 -- Exercise 6 -----------------------------------------
 
 allCodes :: Int -> [Code]
-allCodes = undefined
+allCodes length = 
 
 -- Exercise 7 -----------------------------------------
 
